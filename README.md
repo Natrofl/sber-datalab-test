@@ -25,3 +25,12 @@
 ## Дополнительное задание №2 (необязательное, по желанию):
 1. Дополните Docker Compose file образом Hive Standalone Metastore (версией 3.0+) работающим с использованием базы данных из обязательного задания.
 2. В качестве результата добавьте в репозиторий заполненные файлы Dockerfile, hive-metastore.xml, entrypoint.sh для запуска Hive Metastore
+
+## Запуск
+1. Install docker >= 20.10.5
+2. Install docker-compose >= 1.29.2
+3. Istall git
+4. git clone %repo%
+5. cd %repo%
+6. docker-compose up -d
+7. После развертывания JupyterLab будет доступен по http://IP-Address
