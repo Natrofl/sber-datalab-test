@@ -1,0 +1,44 @@
+version: '3.8'
+networks:
+  cdp:
+    name: cdp
+
+services:
+  jupyter:
+    build: ./jupyter
+    container_name: sber-jupyter
+    networks:
+      cdp:
+        aliases:
+          - jupyter.cdp.local
+    expose:
+      - 8888
+    ports:
+      - "80:8888"
+    depends_on: 
+      - postgres
+
+  postgres:
+    image: postgres:12
+    container_name: sber-db
+    networks:
+      cdp:
+        aliases:
+          - db.cdp.local
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+    expose:
+      - 5432
+
+  hive:
+    build: ./hive
+    container_name: sber-hive
+    networks:
+      cdp:
+        aliases:
+          - hive.cdp.local
+    depends_on: 
+      - postgres
+      - jupyter
