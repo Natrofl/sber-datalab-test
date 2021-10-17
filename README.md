@@ -34,3 +34,6 @@
 5. cd %repo%
 6. docker-compose up -d
 7. После развертывания JupyterLab будет доступен по http://IP-Address
+
+## Пример работы всех ячеек
+![](Screenshot_1.png)
